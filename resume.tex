@@ -7,32 +7,25 @@
 
 \documentclass[letterpaper,11pt]{article}
 \usepackage{enumitem}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 
 \usepackage{latexsym}
-\usepackage[empty]{fullpage}
 \usepackage{titlesec}
 \usepackage{marvosym}
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{verbatim}
-\usepackage{enumitem}
 
-% Compile with LuaLaTeX or XeLaTeX
+% Compile with pdfLaTeX (latexmk -pdf): \pdfgentounicode below is a pdfTeX-only
+% primitive, so XeLaTeX/LuaLaTeX fail on this file.
 \usepackage{fontawesome}
 
 % Redefinition, symbol included in link:
 \let\orighref\href
-\renewcommand{\href}[2]{\orighref{#1}{#2\,\faExternalLink}}
+\renewcommand{\href}[2]{\orighref{#1}{#2\,{\mdseries\faExternalLink}}}
 
 % serif
 \usepackage{charter}
 
-% Adjust margins - slightly less aggressive
-\addtolength{\oddsidemargin}{-0.5in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1.0in}
-\addtolength{\topmargin}{-0.6in}
-\addtolength{\textheight}{1.2in}
 
 \urlstyle{same}
 
@@ -79,13 +72,13 @@
 
 \newcommand{\resumeProjectHeading}[2]{
     \item
-    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
       \small#1 & \textbf{\small #2}\\
     \end{tabular*}\vspace{-5pt}
 }
 \newcommand{\resumeExpHeading}[2]{
     \item
-    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
       #1 & \textbf{\small #2}\\
     \end{tabular*}\vspace{-5pt}
 }
