@@ -1,14 +1,16 @@
-# LaTeX build artifacts
+# LaTeX build output (assets/resume.pdf is the published copy and IS tracked)
+resume/resume.pdf
 *.aux
-*.bbl
-*.blg
-*.fls
-*.fdb_latexmk
 *.log
 *.out
+*.fls
+*.fdb_latexmk
 *.toc
 *.synctex.gz
 *.synctex(busy)
 *.xdv
-# Generated build output
-resume.pdf
+
+# OS junk
+*:Zone.Identifier
+.DS_Store
+Thumbs.db
