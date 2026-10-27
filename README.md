@@ -35,11 +35,14 @@ A server is needed only so relative paths and fonts behave exactly as they do on
 
 1. Create a public repo named `portfolio` under `abharatsai-dev` (or any name — paths are relative).
 2. Push this folder to `main`.
-3. Repository **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+3. The workflow enables Pages on its first run. If it fails, set **Settings → Pages → Build and
+   deployment → Source: GitHub Actions**, then re-run the workflow.
 4. The included workflow (`.github/workflows/pages.yml`) publishes the folder — without `.git` or
    build junk — on every push to `main`.
 
 The site will live at `https://abharatsai-dev.github.io/portfolio/`.
+
+GitHub Pages on a private repo requires a paid plan; this repo is meant to be public.
 
 ### Root URL (optional)
 
@@ -60,6 +63,16 @@ cp resume.pdf ../assets/resume.pdf
 ```
 
   In VS Code: `Ctrl+Alt+B` builds, `Ctrl+Alt+V` opens the PDF, saving rebuilds automatically.
+
+- The résumé is deliberately single-column: no tables, minipages, icons or small caps, because ATS
+  parsers break on them. Keep it that way, and check the text layer after content changes:
+
+```bash
+pdftotext resume/resume.pdf - | head -25
+```
+
+  Name, headings, contact lines and each role's title/employer/dates should come out as plain,
+  flowing text with no gaps inside words or interleaved columns.
 
 - Social preview: `assets/img/og.png` (1200×630). Replace it if the headline or URL changes.
 - Local time in the header/contact/footer is computed in IST by `js/main.js`; no API involved.

@@ -1,215 +1,156 @@
 %-------------------------
-% Resume in Latex
+% Resume in LaTeX
 % Author : Jake Gutierrez
 % Based off of: https://github.com/sb2nov/resume
 % License : MIT
+%
+% ATS notes:
+%  - Single column, no tables, minipages, icons or small caps.
+%  - Standard section names; plain-text contact links and dates.
+%  - T1 font encoding + \pdfgentounicode so pdftotext / ATS extract real text.
+% Compile with pdfLaTeX (latexmk -pdf).
 %------------------------
 
-\documentclass[letterpaper,10pt]{article}
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.4cm,top=1.2cm,bottom=1.2cm]{geometry}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
-
-\usepackage{latexsym}
 \usepackage{titlesec}
-\usepackage{marvosym}
-\usepackage[usenames,dvipsnames]{color}
-\usepackage{verbatim}
-
-% Compile with pdfLaTeX (latexmk -pdf): \pdfgentounicode below is a pdfTeX-only
-% primitive, so XeLaTeX/LuaLaTeX fail on this file.
-\usepackage{fontawesome}
-
-% Redefinition, symbol included in link:
-\let\orighref\href
-\renewcommand{\href}[2]{\orighref{#1}{#2\,{\mdseries\faExternalLink}}}
-
-% serif
 \usepackage{charter}
-
-
-\urlstyle{same}
+\usepackage{microtype}
 
 \pagestyle{empty}
 \raggedbottom
 \raggedright
-\setlength{\tabcolsep}{0in}
+\setlength{\parindent}{0pt}
 
-% Spacing is set once here instead of per-block negative \vspace tweaks.
-\setlist[itemize]{topsep=0pt, itemsep=0pt, parsep=0pt, partopsep=0pt, leftmargin=10pt}
+\hypersetup{
+  pdftitle={Addepalli Bharat Sai - Software Engineer Resume},
+  pdfauthor={Addepalli Bharat Sai},
+  pdfsubject={Software engineer: AI products, music rights, full-stack},
+  pdfkeywords={TypeScript, JavaScript, Python, SQL, React, Next.js, Node.js, Express, NestJS, FastAPI, PostgreSQL, pgvector, Prisma, MySQL, MongoDB, Redis, LLM, RAG, WebSockets, WebRTC, Docker, Azure}
+}
 
-% Sections formatting - better spacing
-\titleformat{\section}{
-  \vspace{3pt}\scshape\raggedright\large\bfseries
-}{}{0em}{}[\color{black}\titlerule\vspace{1pt}]
-
-% Ensure that generate pdf is machine readable/ATS parsable
+% ATS text layer: real Unicode mapping for every glyph in the PDF.
 \pdfgentounicode=1
 
+\titleformat{\section}
+  {\large\bfseries\raggedright}
+  {}{0pt}{}[\vspace{1pt}\titlerule]
+\titlespacing*{\section}{0pt}{5pt}{2pt}
+
+\setlist[itemize]{
+  leftmargin=1.1em,
+  labelsep=0.4em,
+  topsep=1pt,
+  itemsep=0pt,
+  parsep=0pt,
+  partopsep=0pt
+}
+
+% Job / project line: one line, so ATS reads title, employer/location and dates together.
+\newcommand{\entry}[2]{%
+  \vspace{2pt}%
+  \noindent#1\hfill #2\par
+}
+
+\newcommand{\stack}[1]{%
+  \vspace{1pt}{\small\textit{Stack:} #1}\par
+}
+
 %-------------------------
-% Custom commands
-\newcommand{\resumeItem}[1]{
-  \item\small{#1}
-}
-
-\newcommand{\classesList}[4]{
-    \item\small{
-        {#1 #2 #3 #4 }
-  }
-}
-
-\newcommand{\resumeSubheading}[4]{
-  \vspace{2pt}\item
-    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & \textbf{\small #2} \\
-      \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}
-}
-
-\newcommand{\resumeSubSubheading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}
-}
-
-\newcommand{\resumeProjectHeading}[2]{
-    \vspace{2pt}\item
-    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-      \small#1 & \textbf{\small #2}\\
-    \end{tabular*}
-}
-\newcommand{\resumeExpHeading}[2]{
-    \vspace{4pt}\item
-    \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-      #1 & \textbf{\small #2}\\
-    \end{tabular*}
-}
-
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}}
-
-\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
-\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
-
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, itemsep=0pt, label={}]}
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}}
-
-\usepackage[text={19.5cm,26.8cm}]{geometry}
-\setlength{\parskip}{0cm}
-\setlength{\parindent}{1em}
-
-%-------------------------------------------
-%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \begin{document}
 
 %----------HEADING----------
 \begin{center}
-    {\huge \scshape Addepalli Bharat Sai} \\ \vspace{2pt}
-    \small \raisebox{-0.1\height}\faPhone\ +919352229646 ~ \orighref{mailto:addepallibharatsai2001@gmail.com}{\raisebox{-0.2\height}\faEnvelope\  \underline{addepallibharatsai2001@gmail.com}} ~ 
-    \orighref{https://linkedin.com/in/addepalli-bharat-sai-89b376193}{\raisebox{-0.2\height}\faLinkedin\ \underline{linkedin.com/in/ABharatSai}}  ~
-    \orighref{https://github.com/ABharatSai}{\raisebox{-0.2\height}\faGithub\ \underline{github.com/ABharatSai}}
+  {\LARGE\bfseries Addepalli Bharat Sai}\\[2pt]
+  {\large Software Engineer}\\[2pt]
+  {\small
+    Visakhapatnam, India \,|\, +91 93522 29646 \,|\, \href{mailto:addepallibharatsai2001@gmail.com}{addepallibharatsai2001@gmail.com}\\[1pt]
+    \href{https://www.linkedin.com/in/addepalli-bharat-sai-89b376193/}{linkedin.com/in/addepalli-bharat-sai} \,|\, \href{https://github.com/abharatsai-dev}{github.com/abharatsai-dev} \,|\, \href{https://abharatsai-dev.github.io/portfolio/}{abharatsai-dev.github.io/portfolio}
+  }
 \end{center}
 
-%-----------EDUCATION-----------
-\section{Education}
-  \resumeSubHeadingListStart
- \resumeSubheading
-      {Indian Institute of Technology Jodhpur}{July 2019 -- May 2023}
-      {Bachelor of Technology in Bioengineering, CGPA: 8.37/10} {Jodhpur, India}
- \resumeSubheading
-      {Sri Chaitanya Jr. College}{July 2017 -- April 2019}
-      {Class XIIth (BIEAP), Percentage: 97.0\%} {Visakhapatnam, India}
- \resumeSubheading
-      {K. V. Malkapuram, Visakhapatnam}{June 2009 -- April 2017}
-      {Class Xth (CBSE), CGPA: 10/10} {Visakhapatnam, India}
-  \resumeSubHeadingListEnd
+%----------SUMMARY----------
+\section*{Summary}
+\small Full-stack software engineer with 2+ years building AI products for music rights, catalogues and the web. Ships end-to-end systems across React, TypeScript, Node.js and PostgreSQL, with production LLM pipelines, real-time voice and data-heavy platforms.
 
-%-----------PROGRAMMING SKILLS-----------
-\section{Technical Skills}
-\begin{itemize}[leftmargin=0.15in, label={}]
-\small{\item{
-\textbf{Languages}{: JavaScript, TypeScript, Python, C/C++, Dart, SQL} \\
-\vspace{1pt}
-\textbf{Frontend}{: React, Next.js, React Native, HTML/CSS, Tailwind CSS, Bootstrap} \\
-\vspace{1pt}
-\textbf{Backend \& Database}{: Node.js, Express.js, NestJS, Django, MySQL, MongoDB, REST API, WebSockets, WebRTC} \\
-\vspace{1pt}
-\textbf{AI/ML \& Data Science}{: PyTorch, Keras, Scikit-Learn, NumPy, Pandas, Matplotlib, Seaborn, SciSpacy, LLMs} \\
-\vspace{1pt}
-\textbf{Tools \& DevOps}{: Git, Docker, Postman, Android Studio, Visual Studio Code, Google Suite, MS Office}
-}}
+%----------SKILLS----------
+\section*{Technical Skills}
+{\small
+\textbf{Languages:} TypeScript, JavaScript, Python, SQL, C/C++, Dart\\[1pt]
+\textbf{Frontend:} React, Next.js, React Native, HTML/CSS, Tailwind CSS, Vite\\[1pt]
+\textbf{Backend:} Node.js, Express, NestJS, FastAPI, REST APIs, WebSockets, Socket.IO, SSE, WebRTC\\[1pt]
+\textbf{Data:} PostgreSQL, pgvector, Prisma, MySQL, MongoDB, Redis\\[1pt]
+\textbf{AI:} LLM pipelines, RAG, embeddings, tool use, prompt design, evals, PyTorch, scikit-learn, NumPy, Pandas\\[1pt]
+\textbf{Music \& rights:} Royalty statements, cue sheets, catalogue metadata, ISRC/ISWC, MusicBrainz, DSP data\\[1pt]
+\textbf{Platform:} Docker, Azure, Linux, PM2, Git, GitHub Actions (CI/CD), Postman
+}
+
+%----------EXPERIENCE----------
+\section*{Experience}
+
+\entry{\textbf{Software Engineer --- Dotted Eighth LLC}, Visakhapatnam, India}{Dec 2025 -- Present}
+\begin{itemize}
+  \item Build two music-rights products: a royalty-intelligence platform (statement ingestion, cue-sheet checks, catalogue metadata, matching, valuation, permissions and white-label instances) and the Music AI suite over a 55,000-work classical catalogue.
+  \item Shipped an embeddable React chat with SSE streaming, page-by-page sheet-music PDF analysis, and an AI data-quality butler that queues duplicate, missing-field and conflict findings for human review.
+  \item Cut catalogue import time from about 68 minutes to 12 by reworking the ingestion pipeline; enrichment now runs across 15+ music and rights sources with entity resolution.
+\end{itemize}
+\stack{React, TypeScript, Express, Prisma, PostgreSQL, pgvector, MySQL, MongoDB, Redis, SSE, Socket.IO, Python, Azure, LLMs}
+
+\entry{\textbf{Software Developer --- Voice AI Buds}}{Nov 2024 -- Oct 2025}
+\begin{itemize}
+  \item Built an AI companion platform for natural voice and chat, with near real-time voice processing and personalized responses.
+  \item Designed NestJS microservices for 1,000+ concurrent users with WebRTC bidirectional audio and context-aware LLM pipelines; built the Next.js front end and optimized MongoDB schemas.
+\end{itemize}
+\stack{NestJS, Next.js, React, TypeScript, WebRTC, MongoDB, REST APIs, WebSockets}
+
+\entry{\textbf{Software Engineer --- Stealth Startup}, remote}{Oct 2024 -- Mar 2025}
+\begin{itemize}
+  \item Built a production AI productivity platform for text generation, essay composition and image editing, using modular Node/Express services, a Next.js/React front end and a model abstraction layer over LLM and diffusion APIs.
 \end{itemize}
 
-%-----------EXPERIENCE-----------
-\section{Work Experience}
-  \resumeSubHeadingListStart
-\resumeExpHeading
-  {\textbf{Dotted Eighth LLC} $|$ Software Engineer}{December 2025 -- Present}
-\resumeItemListStart
-\resumeItem{Building the \textbf{Music AI suite} over a 55,000-work classical catalogue: an embeddable React chat with SSE streaming, page-by-page sheet-music PDF analysis, and an AI data-quality butler that queues duplicate, missing-field and conflict findings for human review.}
-\resumeItem{\textbf{Tech Stack}: React, TypeScript, Express, Prisma, MySQL, MongoDB, Redis, SSE, Socket.IO, Python, Azure, LLMs}
-\resumeItemListEnd
-
-    \resumeExpHeading 
-         {\textbf{{Voice AI Buds}} $|$ {Software Developer}}{November 2024 -- October 2025}
-\resumeItemListStart
-\resumeItem{Developing an AI companion platform for natural voice and chat interaction, with near real-time voice processing and personalized responses.}
-\resumeItem{Designing NestJS microservices for 1000+ concurrent users with WebRTC bidirectional audio streaming and context-aware LLM pipelines.}
-\resumeItem{Building a responsive Next.js frontend with real-time state management, optimized MongoDB schemas, and automated deployment pipelines.}
-\resumeItem{\textbf{Tech Stack}: NestJS, Next.js, React, TypeScript, WebRTC, MongoDB, REST API, WebSockets}
-\resumeItemListEnd
-
-\resumeExpHeading
-    {\textbf{Aptask - JobTalk} $|$ {Software Developer}}{December 2023 -- May 2024}
-\resumeItemListStart
-\resumeItem{Engineered an end-to-end AI voice agent for recruitment automation, cutting screening time by 70\% with LLM-driven multi-turn dialogue, intent recognition, and entity extraction.}
-\resumeItem{Built the React/TypeScript frontend and Node.js/Express backend: CSV candidate matching, WebSocket call monitoring, and an analytics dashboard tracking 15+ KPIs.}
-\resumeItem{\textbf{Tech Stack}: React, TypeScript, Node.js, Express.js, REST API, WebSockets, LLMs}
-\resumeItemListEnd
-\resumeItemListEnd
-
-%-----------PROJECTS-----------
-\section{Projects}
-        \resumeSubHeadingListStart
-      \resumeProjectHeading {\textbf{\href{https://github.com/ABharatSai/Cancer-Prediction-App}{Cancer Biomarker Analysis App}} $|$ \emph{Dr. Siddharth Srivastava, BTP}}{August 2022 -- November 2022}
-\resumeItemListStart
-\resumeItem{Developed a cross-platform Flutter app for biomarker gene selection, integrating OncoKB for FDA-approved pancreatic adenocarcinoma treatment recommendations.}
-\resumeItem{\textbf{Tech Stack}: Flutter, Dart, C++, CMake, Android Studio}
-\resumeItemListEnd
-
-\resumeProjectHeading {\textbf{\href{https://github.com/ABharatSai/Sentiment_Analysis-using-NLP}{Sentiment Analysis using NLP}} $|$ \emph{Dr. Yashaswi Verma, ML Course Project}}{December 2020 -- February 2021}
-\resumeItemListStart
-\resumeItem{Implemented an IMDB review helpfulness pipeline with semantic feature engineering and ensembles (Naive Bayes, Random Forest, Logistic Regression), reaching 89.48\% test accuracy.}
-\resumeItemListEnd
-
-\resumeProjectHeading
-{\textbf{\href{https://github.com/ABharatSai/CSPM}{CrowdSourced Participatory Medicine Framework}} $|$ \emph{Dr. Mitali Mukerji, Design Project}}{July 2021 -- July 2022}
-\resumeItemListStart
-\resumeItem{Led an 8-member team building a Heroku-deployed crowdsourcing platform, with a Reddit crawler collecting 1000+ medical experiences and SciSpacy NER for biomedical entity extraction.}
-\resumeItemListEnd
-    \resumeSubHeadingListEnd
-
-\begin{minipage}[t]{0.48\textwidth}
-\section{Relevant Coursework}
-\begin{itemize}[itemsep=-3pt, parsep=2pt]
-\item\small Data Structures and Algorithms
-\item Introduction to Machine Learning
-\item Deep Learning
-\item Probability, Statistics and Stochastic process
-\item Linear Algebra
+\entry{\textbf{Freelance Software Engineer} --- Independent, remote}{Sep 2024 -- Present}
+\begin{itemize}
+  \item Deliver AI-powered web, voice and productivity applications for startups and businesses, from prototype to production.
 \end{itemize}
-\end{minipage}%
-\hfill
-\begin{minipage}[t]{0.48\textwidth}
-\section{Achievements/Extracurriculars}
-\begin{itemize}[itemsep=-3pt, parsep=2pt]
-\item\small Department Rank 4 in Bioscience and Bioengineering
-\item Rank 626 of 1,85,711 in AP-EAMCET 2019
-\item Top 1.5\% of 1.3 million JEE 2019 applicants
-\item Rank 2754 of 1,80,752 in JEE-B.Arch 2019
+
+\entry{\textbf{Software Developer --- Aptask (JobTalk)}, remote}{Dec 2023 -- May 2024}
+\begin{itemize}
+  \item Engineered an end-to-end AI voice agent for recruitment automation, cutting screening time by 70\% with LLM-driven multi-turn dialogue, intent recognition and entity extraction.
+  \item Built the React/TypeScript front end and Node/Express back end with CSV candidate matching, WebSocket call monitoring and a 15+ KPI analytics dashboard.
 \end{itemize}
-\end{minipage}
+\stack{React, TypeScript, Node.js, Express, REST APIs, WebSockets, LLMs}
+
+%----------PROJECTS----------
+\section*{Projects}
+
+\entry{\textbf{Cancer Biomarker Analysis App} --- Flutter, BTP under Dr. Siddharth Srivastava}{Aug 2022 -- Nov 2022}
+\begin{itemize}
+  \item Built a cross-platform app for biomarker gene selection, integrating OncoKB for FDA-approved pancreatic adenocarcinoma treatment recommendations.
+\end{itemize}
+
+\entry{\textbf{Crowdsourced Participatory Medicine} --- design project under Dr. Mitali Mukerji}{Jul 2021 -- Jul 2022}
+\begin{itemize}
+  \item Led an 8-person team building a Heroku-deployed crowdsourcing platform; a Reddit crawler collected 1,000+ medical experiences and SciSpacy extracted biomedical entities.
+\end{itemize}
+
+\entry{\textbf{Sentiment Analysis using NLP} --- ML course project under Dr. Yashaswi Verma}{Dec 2020 -- Feb 2021}
+\begin{itemize}
+  \item Implemented an IMDB review helpfulness pipeline with semantic feature engineering and ensembles (Naive Bayes, Random Forest, Logistic Regression), reaching 89.48\% test accuracy.
+\end{itemize}
+
+%----------EDUCATION----------
+\section*{Education}
+\entry{\textbf{B.Tech in Bioengineering --- IIT Jodhpur}, CGPA 8.37/10, Department Rank 4}{2019 -- 2023}
+\vspace{-1pt}
+\small Coursework: Data Structures and Algorithms, Machine Learning, Deep Learning, Probability and Statistics, Linear Algebra.
+
+%----------ACHIEVEMENTS----------
+\section*{Achievements}
+\small JEE 2019: top 1.5\% of 1.3 million applicants. AP-EAMCET 2019: rank 626 of 185,711. JEE B.Arch 2019: rank 2,754 of 180,752.
 
 \end{document}
