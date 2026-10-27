@@ -1,0 +1,236 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+
+% Compile with LuaLaTeX or XeLaTeX
+\usepackage{fontawesome}
+
+% Redefinition, symbol included in link:
+\let\orighref\href
+\renewcommand{\href}[2]{\orighref{#1}{#2\,\faExternalLink}}
+
+% serif
+\usepackage{charter}
+
+% Adjust margins - slightly less aggressive
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.0in}
+\addtolength{\topmargin}{-0.6in}
+\addtolength{\textheight}{1.2in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting - better spacing
+\titleformat{\section}{
+  \vspace{-2pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\color{black}\titlerule \vspace{-3pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-1pt}}
+  }
+}
+
+\newcommand{\classesList}[4]{
+    \item\small{
+        {#1 #2 #3 #4 \vspace{-1pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{1.0\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{\small #2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textbf{\small #2}\\
+    \end{tabular*}\vspace{-5pt}
+}
+\newcommand{\resumeExpHeading}[2]{
+    \item
+    \begin{tabular*}{1.001\textwidth}{l@{\extracolsep{\fill}}r}
+      #1 & \textbf{\small #2}\\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-3pt}}
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
+
+\usepackage[text={19cm,26cm}]{geometry}
+\setlength{\parskip}{0cm}
+\setlength{\parindent}{1em}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    {\huge \scshape Addepalli Bharat Sai} \\ \vspace{3pt}
+\vspace{5pt}
+    \small \raisebox{-0.1\height}\faPhone\ +919352229646 ~ \orighref{mailto:addepallibharatsai2001@gmail.com}{\raisebox{-0.2\height}\faEnvelope\  \underline{addepallibharatsai2001@gmail.com}} ~ 
+    \orighref{https://linkedin.com/in/addepalli-bharat-sai-89b376193}{\raisebox{-0.2\height}\faLinkedin\ \underline{linkedin.com/in/ABharatSai}}  ~
+    \orighref{https://github.com/ABharatSai}{\raisebox{-0.2\height}\faGithub\ \underline{github.com/ABharatSai}}
+\end{center}
+\vspace{-12pt}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+ \resumeSubheading
+      {Indian Institute of Technology Jodhpur}{July 2019 -- May 2023}
+      {Bachelor of Technology in Bioengineering, CGPA: 8.37/10} {Jodhpur, India}
+ \resumeSubheading
+      {Sri Chaitanya Jr. College}{July 2017 -- April 2019}
+      {Class XIIth (BIEAP), Percentage: 97.0\%} {Visakhapatnam, India}
+ \resumeSubheading
+      {K. V. Malkapuram, Visakhapatnam}{June 2009 -- April 2017}
+      {Class Xth (CBSE), CGPA: 10/10} {Visakhapatnam, India}
+  \resumeSubHeadingListEnd
+\vspace{-14pt}
+
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+\small{\item{
+\textbf{Languages}{: JavaScript, TypeScript, Python, C/C++, Dart, SQL} \\
+\vspace{1pt}
+\textbf{Frontend}{: React, Next.js, React Native, HTML/CSS, Tailwind CSS, Bootstrap} \\
+\vspace{1pt}
+\textbf{Backend \& Database}{: Node.js, Express.js, NestJS, Django, MySQL, MongoDB, REST API, WebSockets, WebRTC} \\
+\vspace{1pt}
+\textbf{AI/ML \& Data Science}{: PyTorch, Keras, Scikit-Learn, NumPy, Pandas, Matplotlib, Seaborn, SciSpacy, LLMs} \\
+\vspace{1pt}
+\textbf{Tools \& DevOps}{: Git, Docker, Postman, Android Studio, Visual Studio Code, Google Suite, Microsoft Office}
+}}
+\end{itemize}
+\vspace{-18pt}
+
+%-----------EXPERIENCE-----------
+\section{Work Experience}
+\vspace{-5pt}
+  \resumeSubHeadingListStart
+    \resumeExpHeading 
+         {\textbf{{Voice AI Buds}} $|$ {Software Developer}}{June 2024 -- Present}
+\resumeItemListStart
+\resumeItem{Developing an AI conversation platform enables with natural voice and chat interactions with personalized AI companions, implementing near real-time voice processing for seamless user experience.}
+\resumeItem{Designing scalable microservices architecture using NestJS to support 1000+ concurrent users, integrating WebRTC for low-latency bidirectional audio streaming and context-aware LLM pipelines for personalized responses.}
+\resumeItem{Building responsive Next.js frontend with real-time state management and optimized MongoDB schemas for conversation history with automated deployment pipelines.}
+\resumeItem{\textbf{Tech Stack}: NestJS, Next.js, React, TypeScript, WebRTC, MongoDB, REST API, WebSockets}
+\resumeItemListEnd
+\vspace{-14pt}
+
+\resumeExpHeading
+  {\textbf{AI Suite Tools} $|$ Software Developer}{December 2024 -- Present}
+\resumeItemListStart
+\resumeItem{Developing production-ready AI productivity suite with text generation and image editing capabilities, abstracting complexity of open-source models (GPT, DALL-E, Stable Diffusion) behind intuitive interfaces for non-technical users.}
+\resumeItem{Implementing modular microservices with Node.js/Express for tweet generation, essay composition, and image manipulation tools.}
+\resumeItem{\textbf{Tech Stack}: React, Next.js, Node.js, Express, TypeScript, REST API}
+\resumeItemListEnd
+\vspace{-14pt}
+  
+\resumeExpHeading
+    {\textbf{Aptask - JobTalk} $|$ {Software Developer}}{December 2023 -- May 2024}
+\resumeItemListStart
+\resumeItem{Engineered end-to-end AI Voice Agent for recruitment automation, reducing screening time by 70\% through LLM-powered conversational flows with dynamic intent recognition, entity extraction, and multi-turn dialogue management.}
+\resumeItem{Built full-stack solution with React/TypeScript frontend and Node.js/Express backend, implementing CSV data processing pipelines for candidate matching, WebSocket-based real-time call monitoring, and analytics dashboard tracking 15+ KPIs.}
+\resumeItem{\textbf{Tech Stack}: React, TypeScript, Node.js, Express.js, REST API, WebSockets, LLMs}
+\resumeItemListEnd
+\resumeItemListEnd
+\vspace{-8pt}
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \vspace{-5pt}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading {\textbf{\href{https://github.com/ABharatSai/Cancer-Prediction-App}{Cancer Biomarker Analysis App}} $|$ \emph{Dr. Siddharth Srivastava, BTP}}{August 2022 -- November 2022}
+\resumeItemListStart
+\resumeItem{Developed cross-platform Flutter application assisting oncologists in gene selection for biomarker testing, integrating OncoKB database to provide FDA-approved treatment recommendations tailored for pancreatic adenocarcinoma with streamlined clinical workflow.}
+\resumeItem{\textbf{Tech Stack}: Flutter, Dart, C++, CMake, Android Studio}
+\resumeItemListEnd
+\vspace{-14pt}
+
+\resumeProjectHeading {\textbf{\href{https://github.com/ABharatSai/Sentiment_Analysis-using-NLP}{Sentiment Analysis using NLP}} $|$ \emph{Dr. Yashaswi Verma, ML Course Project}}{December 2020 -- February 2021}
+\resumeItemListStart
+\resumeItem{Implemented sentiment classification pipeline predicting IMDB review helpfulness through semantic feature engineering and ensemble methods (Naive Bayes, Random Forest, Logistic Regression), achieving 89.48\% test accuracy on Stanford dataset with optimized hyperparameter tuning.}
+\resumeItemListEnd
+\vspace{-14pt}
+
+\resumeProjectHeading
+{\textbf{\href{https://github.com/ABharatSai/CSPM}{CrowdSourced Participatory Medicine Framework}} $|$ \emph{Dr. Mitali Mukerji, Design Project}}{July 2021 -- July 2022}
+\resumeItemListStart
+\resumeItem{Led 8-member team developing Heroku-deployed crowdsourcing platform for patient-reported outcomes, building custom Reddit webcrawler collecting 1000+ medical experiences and extracting biomedical entities (symptoms, medications, organs) using SciSpacy NER models.}
+\resumeItemListEnd
+    \resumeSubHeadingListEnd
+\vspace{-4pt}
+
+\begin{minipage}[t]{0.48\textwidth}
+\section{Relevant Coursework}
+\begin{itemize}[itemsep=-3pt, parsep=2pt]
+\item\small Introduction to Computer Science
+\item Data Structures and Algorithms
+\item Introduction to Machine Learning
+\item Deep Learning
+\item Single and Multivariable Calculus
+\item Probability, Statistics and Stochastic process
+\item Complex analysis and Differential Equations
+\item Linear Algebra
+\end{itemize}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\section{Achievements/Extracurriculars}
+\begin{itemize}[itemsep=-3pt, parsep=2pt]
+\item\small Department Rank 4 of Bioscience and Bioengineering branch
+\item Achieved Rank 626 out of 1,85,711 students in AP-EAMCET'19 examination
+\item Among top 1.5\% percentile of 1.3 million applicants in JEE-2019
+\item Achieved Rank 2754 out of 1,80,752 students in JEE-B.Arch 2019 examination
+\end{itemize}
+\end{minipage}
+
+\end{document}
